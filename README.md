@@ -38,6 +38,7 @@ You'll also find a complete Pwnagotchi noob build guide + some common troublesho
 	- [Associations even when "enable_assoc" plugin disabled](https://github.com/SHUR1K-N/Project-Pwnag0dchi#my-gotchi-does-associations-even-when-the-enable_assoc-plugin-is-turned-off)
  	- [I got the tri-color variant of the Waveshare screen, and it sucks. Now what?](https://github.com/SHUR1K-N/Project-Pwnag0dchi#i-got-the-tri-color-variant-of-the-waveshare-screen-and-it-sucks-now-what)
   	- [I don't like dark mode, how do I make the UI white like default?](https://github.com/SHUR1K-N/Project-Pwnag0dchi#i-dont-like-the-dark-mode-ui-how-do-i-make-the-ui-white-like-default)
+  	- [memtemp-plus elements get cut-off](https://github.com/SHUR1K-N/Project-Pwnag0dchi#memtemp-plus-elements-get-cut-off)
 
 ---
 # Project Pwnag0dchi Modifications
@@ -105,7 +106,7 @@ Then make the following additions / changes:
 
 ## Installation
 1. Attach the Waveshare display to the Pi Zero (hardware part done!)
-2. Download a Pwnagotchi image file of your choice (jayofelony, etc.)
+2. Download a [jayofelony's](https://github.com/jayofelony/pwnagotchi) v2.8.9 release image (thoroughly tested) or v2.9.3 release image (works as far as tested)
 3. Download / Install [Balena Etcher](https://etcher.balena.io/#download-etcher)
 4. Insert your Pwnagotchi's micro-SD into a card-reader, and into your computer
 5. Open Balena Etcher
@@ -113,7 +114,7 @@ Then make the following additions / changes:
 7. Also carefully select the inserted micro-SD card
 8. Flash!
 9. After flashing completes, insert the micro-SD card into your Pwnagotchi and power it on
-10. **On the first boot, your Pwangotchi will need some time to initialize (anywhere from 2 to even 30 minutes). During this initialization period, do not panic if you see nothing on the display or a `"Generating keys, do not turn off..."` message. Once this process is complete, your Pwangotchi will restart by itself and be ready to use**
+10. **On the first boot, your Pwnagotchi will need some time to initialize (anywhere from 2 to even 30 minutes). During this initialization period, do not panic if you see nothing on the display or a `"Generating keys, do not turn off..."` message. Once this process is complete, your Pwnagotchi will restart by itself and be ready to use**
     > NOTE: This only applies to the first boot. You will not have to wait for more than ~2-3 minutes for any future boot-ups
 11. IT'S ALIIIIIVE!
 
@@ -254,3 +255,11 @@ This usually happens with _new_ sessions; the 'gotchi just seems to "forget" wha
 2. Web UI > Plugins > webcfg
 3. Look for `ui.invert`, and change the value to `True`
 4. Scroll to the top, hit "Save and Restart"
+
+## memtemp-plus elements get cut-off
+1. Either change to the following values in the tweak_view plugin or add them in `/etc/pwnagotchi/tweak_view.json`:
+```
+"VSS.memtemp_header.xy": "145,82",
+"VSS.memtemp_data.xy": "145,95",
+"VSS.Lv.xy": "151,72"
+```
